@@ -2,21 +2,17 @@ package net.vanheesch.better;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mockito;
 
 import java.util.List;
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
-@ExtendWith(MockitoExtension.class)
 class SentenceGeneratorTest {
 
-	@Mock
-	private Random randomMock;
+	private final RandomGenerator randomMock = Mockito.mock(RandomGenerator.class);
 
 	private SentenceGenerator sut;
 
