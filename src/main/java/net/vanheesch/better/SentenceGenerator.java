@@ -1,4 +1,4 @@
-package net.vanheesch;
+package net.vanheesch.better;
 
 import java.util.Arrays;
 import java.util.List;
