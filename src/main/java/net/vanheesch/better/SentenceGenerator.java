@@ -3,6 +3,7 @@ package net.vanheesch.better;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class SentenceGenerator {
 
@@ -11,25 +12,26 @@ public class SentenceGenerator {
     private final List<String> subjects;
     private final List<String> verbs;
     private final List<String> objects;
-    private final Random random = new Random();
+    private final RandomGenerator random;
 
     public static void main(String[] args) {
         List<String> subjects = Arrays.asList("Liam", "Priya", "Mila", "Amina", "Noah", "Horst", "Emilia", "Finn", "Samir", "Lea", "Ben", "Sofia");
         List<String> verbs = Arrays.asList("tanzt", "codet", "bastelt", "zockt", "liebt", "hört", "sammelt", "zerlegt");
         List<String> objects = Arrays.asList("Bluetooth-Boxen", "Avocados", "TikTok-Videos", "Sneaker", "LED-Stripes", "Proteinriegel", "Plastikroboter", "Regenjacken");
 
-        SentenceGenerator sentenceGenerator = new SentenceGenerator(subjects, verbs, objects);
+        SentenceGenerator sentenceGenerator = new SentenceGenerator(new Random(), subjects, verbs, objects);
 
         for (int i = 0; i < NUMBER_OF_SENTENCES; i++) {
             System.out.println(sentenceGenerator.generateSentence());
         }
     }
 
-    public SentenceGenerator(List<String> subjects, List<String> verbs, List<String> objects) {
+    public SentenceGenerator(RandomGenerator random, List<String> subjects, List<String> verbs, List<String> objects) {
         this.subjects = subjects;
         this.verbs = verbs;
         this.objects = objects;
-    }
+		this.random = random;
+	}
 
     public String generateSentence() {
         String subject = getRandomElement(subjects);
